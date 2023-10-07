@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by moqingting on 2020/6/22.
+  Copyright © 2020 The Chromium Authors. All rights reserved.
+*/
+"NSCameraUsageDescription" = "需要您的同意,APP才能访问相机";
+"NSPhotoLibraryAddUsageDescription" = "需要您的同意,APP才能访问相册";
+"NSPhotoLibraryUsageDescription" = "需要您的同意,APP才能访问相册";
+"NSMicrophoneUsageDescription" = "麦克风使用于拍摄视频";
+

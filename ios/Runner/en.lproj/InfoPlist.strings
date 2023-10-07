@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by moqingting on 2020/6/22.
+  Copyright © 2020 The Chromium Authors. All rights reserved.
+*/
+"NSCameraUsageDescription" = "Camera permission is required for barcode scanning.";
+"NSPhotoLibraryAddUsageDescription" = "Allow access to photo albums.";
+"NSPhotoLibraryUsageDescription" = "Allow access to photo albums.";
+"NSMicrophoneUsageDescription" = "Microphones are used to take video";
+"NSContactDescription" = "Microphones are used to take video";
