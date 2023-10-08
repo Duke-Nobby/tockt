@@ -1369,6 +1369,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Have account!`
+  String get str_have_account {
+    return Intl.message(
+      'Have account!',
+      name: 'str_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get str_go_login {
+    return Intl.message(
+      'Login',
+      name: 'str_go_login',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

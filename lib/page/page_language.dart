@@ -1,10 +1,10 @@
 import 'package:tockt/base/base_widget.dart';
 import 'package:tockt/provider/locale_provider.dart';
-import 'package:tockt/provider/storage.dart';
 import 'package:tockt/utils/color_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:tockt/utils/mmkv_utils.dart';
 
 import '../bean/language_bean.dart';
 import '../generated/l10n.dart';
@@ -95,7 +95,7 @@ class _LanguageState extends BaseWidgetState<LanguagePage> {
                 ? Provider.of<LocaleProvider>(context, listen: false).setLocale(const Locale("zh", "CN"))
                 : Provider.of<LocaleProvider>(context, listen: false).setLocale(const Locale("en", "US"));
             var lan = languageBean.languageCode == 'zh' ? 'zhmsg' : 'cnmsg';
-            Storage.setLanguage(languageBean.languageCode);
+            MMKVUtils.setString(LOCALE_KEY,languageBean.languageCode);
             BaseService.instance.setAppLanguage(lan, (message) {});
           });
         },

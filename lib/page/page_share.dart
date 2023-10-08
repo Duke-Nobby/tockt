@@ -10,7 +10,6 @@ import '../bean/user_bean.dart';
 import '../generated/l10n.dart';
 import '../network/base_service.dart';
 import '../network/message_model.dart';
-import '../provider/storage.dart';
 import '../provider/user_provider.dart';
 
 class SharePage extends BaseWidget {

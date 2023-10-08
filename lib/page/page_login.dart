@@ -9,6 +9,7 @@ import 'package:tockt/page/page_main.dart';
 import 'package:tockt/page/webview_page.dart';
 import 'package:tockt/provider/user_provider.dart';
 import 'package:tockt/utils/color_utils.dart';
+import 'package:tockt/utils/mmkv_utils.dart';
 import 'package:tockt/utils/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,6 @@ import '../bean/version_bean.dart';
 import '../dialog/dialog_update.dart';
 import '../generated/l10n.dart';
 import '../network/message_model.dart';
-import '../provider/storage.dart';
 import '../widget/blank_tool_bar_tool.dart';
 import '../widget/message_dialog.dart';
 import '../widget/progress_dialog.dart';
@@ -365,10 +365,10 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
     BaseService.instance.doLogin(username, password, (message, user, sessionId) {
       ProgressDialog.dismiss(context);
       if (message.status == ApiResultType.success) {
-        Storage.setString(USER_NAME, username);
-        Storage.setString(USER_PASSWORD, password);
-        Storage.setBool(IS_LOGIN, true);
-        Storage.setString(USER_BEAN, json.encode(user));
+        MMKVUtils.setString(USER_NAME, username);
+        MMKVUtils.setString(USER_PASSWORD, password);
+        MMKVUtils.setBool(IS_LOGIN, true);
+        MMKVUtils.setString(USER_BEAN, json.encode(user));
         final userState = Provider.of<UserProvider>(context, listen: false);
         userState.changeUserBean(user);
         userState.changeIsLoginState(true);
@@ -445,9 +445,9 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
   }
 
   _initDate() async {
-    _userName = await Storage.getString(USER_NAME) ?? "";
+    _userName = MMKVUtils.getString(USER_NAME) ?? "";
     _nameController.text = _userName;
-    _password = await Storage.getString(USER_PASSWORD) ?? "";
+    _password =  MMKVUtils.getString(USER_PASSWORD) ?? "";
     _pwdController.text = _password;
   }
 }

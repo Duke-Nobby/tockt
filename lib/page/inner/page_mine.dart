@@ -1,5 +1,6 @@
 import 'package:tockt/base/base_inner_widget.dart';
 import 'package:tockt/utils/color_utils.dart';
+import 'package:tockt/utils/mmkv_utils.dart';
 import 'package:tockt/utils/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ import 'package:provider/provider.dart';
 import '../../base/common_text_style.dart';
 import '../../bean/user_bean.dart';
 import '../../generated/l10n.dart';
-import '../../provider/storage.dart';
 import '../../provider/user_provider.dart';
 
 class MinePage extends BaseInnerWidget {
@@ -226,9 +226,9 @@ class _MineState extends BaseInnerWidgetState<MinePage> {
   }
 
   _onExit() {
-    Storage.setString(TOKEN, "");
-    Storage.setBool(IS_LOGIN, false);
-    Storage.setString(USER_BEAN, "");
+    MMKVUtils.setString(TOKEN, "");
+    MMKVUtils.setBool(IS_LOGIN, false);
+    MMKVUtils.setString(USER_BEAN, "");
     final userState = Provider.of<UserProvider>(context, listen: false);
     userState.changeUserBean(UserBean());
     userState.changeIsLoginState(false);

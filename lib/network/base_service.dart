@@ -6,10 +6,10 @@ import 'package:tockt/bean/earn_record_bean.dart';
 import 'package:tockt/bean/transfer_record_bean.dart';
 import 'package:tockt/bean/version_bean.dart';
 import 'package:tockt/ext/extension_string.dart';
-import 'package:tockt/provider/storage.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/material.dart';
+import 'package:tockt/utils/mmkv_utils.dart';
 
 import '../bean/Card_bean.dart';
 import '../bean/account_balance_bean.dart';
@@ -130,10 +130,6 @@ class BaseService {
 
     var headers = <String, dynamic>{};
     headers['app'] = 'true';
-    var sessionId = await Storage.getString(SESSION_ID) ?? '';
-    if (sessionId.isNotEmpty) {
-      headers['cookie'] = "JSESSIONID=$sessionId";
-    }
     try {
       var response = await dio.get(url, options: Options(method: 'GET', contentType: Headers.jsonContentType, headers: headers));
       if (response.data != null) {
@@ -184,7 +180,7 @@ class BaseService {
 
   Future<String> _failedMessage(DioErrorType type) async {
     var message = '';
-    var name = await Storage.getString(LOCALE_KEY);
+    var name = await MMKVUtils.getString(LOCALE_KEY);
     if (type == DioErrorType.connectionTimeout) {
       if ("zh" == name) {
         message = "连接超时";

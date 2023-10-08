@@ -1,6 +1,6 @@
 import 'package:tockt/bean/user_bean.dart';
-import 'package:tockt/provider/storage.dart';
 import 'package:tockt/provider/user_provider.dart';
+import 'package:tockt/utils/mmkv_utils.dart';
 import 'package:tockt/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -90,9 +90,9 @@ abstract class BaseInnerWidgetState<T extends BaseInnerWidget> extends State<T> 
 
   checkSessionExpire(ApiResultType type) {
     if (type == ApiResultType.expire) {
-      Storage.setString(TOKEN, "");
-      Storage.setBool(IS_LOGIN, false);
-      Storage.setString(USER_BEAN, "");
+      MMKVUtils.setString(TOKEN, "");
+      MMKVUtils.setBool(IS_LOGIN, false);
+      MMKVUtils.setString(USER_BEAN, "");
       final userState = Provider.of<UserProvider>(context, listen: false);
       userState.changeUserBean(UserBean());
       userState.changeIsLoginState(false);

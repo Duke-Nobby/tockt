@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:tockt/provider/storage.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../bean/user_bean.dart';

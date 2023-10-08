@@ -130,5 +130,7 @@
   "str_active": "Active",
   "str_have_card": "Already have card",
   "str_mainland": "(Domestic)",
-  "str_out_sea": "(International)"
+  "str_out_sea": "(International)",
+  "str_have_account": "Have account!",
+  "str_go_login": "Login"
 }

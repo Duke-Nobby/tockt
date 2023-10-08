@@ -4,6 +4,7 @@ import 'package:tockt/base/base_widget.dart';
 import 'package:tockt/network/base_service.dart';
 import 'package:tockt/network/message_model.dart';
 import 'package:tockt/provider/user_provider.dart';
+import 'package:tockt/utils/mmkv_utils.dart';
 import 'package:tockt/widget/message_dialog.dart';
 import 'package:tockt/widget/progress_dialog.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,7 +15,6 @@ import 'package:provider/provider.dart';
 
 import '../base/common_text_style.dart';
 import '../generated/l10n.dart';
-import '../provider/storage.dart';
 import '../utils/color_utils.dart';
 import '../utils/pwd_utils.dart';
 import '../utils/router.dart';
@@ -246,9 +246,9 @@ class _SetLoginPwdState extends BaseWidgetState<PageSetLoginPwdPage> {
         if (userBean != null) {
           _inviteController.text = "";
           _pwdController.text = "";
-          Storage.setString(USER_NAME, userBean.username);
-          Storage.setBool(IS_LOGIN, true);
-          Storage.setString(USER_BEAN, json.encode(userBean));
+          MMKVUtils.setString(USER_NAME, userBean.username);
+          MMKVUtils.setBool(IS_LOGIN, true);
+          MMKVUtils.setString(USER_BEAN, json.encode(userBean));
           final userState = Provider.of<UserProvider>(context, listen: false);
           userState.changeUserBean(userBean);
           userState.changeIsLoginState(true);

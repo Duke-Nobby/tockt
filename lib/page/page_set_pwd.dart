@@ -3,7 +3,6 @@ import 'package:tockt/network/base_service.dart';
 import 'package:tockt/network/message_model.dart';
 import 'package:tockt/page/webview_page.dart';
 import 'package:tockt/provider/locale_provider.dart';
-import 'package:tockt/provider/storage.dart';
 import 'package:tockt/utils/color_utils.dart';
 import 'package:tockt/utils/router.dart';
 import 'package:tockt/widget/progress_dialog.dart';

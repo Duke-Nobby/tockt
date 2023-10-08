@@ -5,9 +5,9 @@ import 'dart:ui';
 import 'package:tockt/network/base_service.dart';
 import 'package:tockt/provider/card_provider.dart';
 import 'package:tockt/provider/locale_provider.dart';
-import 'package:tockt/provider/storage.dart';
 import 'package:tockt/provider/theme_provider.dart';
 import 'package:tockt/provider/user_provider.dart';
+import 'package:tockt/utils/mmkv_utils.dart';
 import 'package:tockt/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,11 +23,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  var language = await Storage.getString(LOCALE_KEY) ?? window.locale.languageCode;
-  var isLogin = await Storage.getBool(IS_LOGIN) ?? false;
+  var language = await MMKVUtils.getString(LOCALE_KEY) ?? window.locale.languageCode;
+  var isLogin = await MMKVUtils.getBool(IS_LOGIN);
   var userBean = null;
   if (isLogin) {
-    var userString = await Storage.getString(USER_BEAN) ?? "";
+    var userString = await MMKVUtils.getString(USER_BEAN) ?? "";
     if (userString.isNotEmpty) {
       var map = json.decode(userString);
       userBean = UserBean.fromJson(map);

@@ -72,10 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "str_finished": MessageLookupByLibrary.simpleMessage("已完成"),
         "str_forget_password": MessageLookupByLibrary.simpleMessage("忘记密码"),
         "str_get_code": MessageLookupByLibrary.simpleMessage("获取验证码"),
+        "str_go_login": MessageLookupByLibrary.simpleMessage("去登录"),
         "str_go_register": MessageLookupByLibrary.simpleMessage("去注册"),
         "str_grant_storage_permission":
             MessageLookupByLibrary.simpleMessage("请到系统设置授予存储权限"),
         "str_has_actived": MessageLookupByLibrary.simpleMessage("已激活"),
+        "str_have_account": MessageLookupByLibrary.simpleMessage("已有账号!"),
         "str_have_card": MessageLookupByLibrary.simpleMessage("已有银联现金卡"),
         "str_have_no_account": MessageLookupByLibrary.simpleMessage("还没有账号？"),
         "str_index": MessageLookupByLibrary.simpleMessage("首页"),

@@ -88,10 +88,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "str_forget_password":
             MessageLookupByLibrary.simpleMessage("Forget password"),
         "str_get_code": MessageLookupByLibrary.simpleMessage("Get Code"),
+        "str_go_login": MessageLookupByLibrary.simpleMessage("Login"),
         "str_go_register": MessageLookupByLibrary.simpleMessage("Register"),
         "str_grant_storage_permission": MessageLookupByLibrary.simpleMessage(
             "Please go to the system to set storage permissions"),
         "str_has_actived": MessageLookupByLibrary.simpleMessage("Activated"),
+        "str_have_account":
+            MessageLookupByLibrary.simpleMessage("Have account!"),
         "str_have_card":
             MessageLookupByLibrary.simpleMessage("Already have card"),
         "str_have_no_account":

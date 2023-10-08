@@ -130,5 +130,7 @@
   "str_active": "激活",
   "str_have_card": "已有银联现金卡",
   "str_mainland": "(国内)",
-  "str_out_sea": "(海外)"
+  "str_out_sea": "(海外)",
+  "str_have_account": "已有账号!",
+  "str_go_login": "去登录"
 }

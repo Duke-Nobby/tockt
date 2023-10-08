@@ -1,5 +1,4 @@
 import 'package:tockt/network/message_model.dart';
-import 'package:tockt/provider/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -128,14 +127,21 @@ abstract class BaseWidgetState<T extends BaseWidget> extends State<T> with Widge
   }
 
   checkSessionExpire(ApiResultType type) {
-    if (type == ApiResultType.expire) {
-      Storage.setString(TOKEN, "");
-      Storage.setBool(IS_LOGIN, false);
-      Storage.setString(USER_BEAN, "");
-      final userState = Provider.of<UserProvider>(context, listen: false);
-      userState.changeUserBean(UserBean());
-      userState.changeIsLoginState(false);
-      Navigator.of(context).pushNamedAndRemoveUntil(PagePath.pageLogin, (Route<dynamic> route) => false);
+    // if (type == ApiResultType.expire) {
+    //   Storage.setString(TOKEN, "");
+    //   Storage.setBool(IS_LOGIN, false);
+    //   Storage.setString(USER_BEAN, "");
+    //   final userState = Provider.of<UserProvider>(context, listen: false);
+    //   userState.changeUserBean(UserBean());
+    //   userState.changeIsLoginState(false);
+    //   Navigator.of(context).pushNamedAndRemoveUntil(PagePath.pageLogin, (Route<dynamic> route) => false);
+    // }
+  }
+
+  void hideKeyboard(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus?.unfocus();
     }
   }
 
