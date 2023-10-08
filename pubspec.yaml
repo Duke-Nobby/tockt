@@ -119,7 +119,6 @@ flutter:
     - assets/icons/icon_receive_code.png
     - assets/icons/icon_scan.png
     - assets/icons/icon_data_async.png
-    - assets/icons/icon_transfer.png
     - assets/icons/icon_shop_center.png
     - assets/icons/icon_bind_card.png
     - assets/icons/icon_account.png
@@ -142,14 +141,13 @@ flutter:
     - assets/icons/icon_contact_us.png
     - assets/icons/icon_withdraw_arrow.png
     - assets/icons/icon_mine_password.png
-    - assets/icons/icon_close.png
-    - assets/icons/icon_not_open_yet.png
     - assets/icons/bg_update_header.png
     - assets/icons/icon_reserve_fund_recharge.png
     - assets/icons/icon_card_logo.png
     - assets/icons/icon_card_bg1.png
     - assets/icons/icon_card_bind.png
     - assets/icons/icon_card_none.png
+    - assets/icons/bg_splash.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

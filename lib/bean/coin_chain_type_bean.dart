@@ -13,7 +13,7 @@ class DepositChainBean {
     created = json['created']??"";
     gas = json['gas'].toString();
     id = json['id']??0;
-    coinName = json['coinName'??""];
+    coinName = json['coinName'].toString();
     isShow = json['isShow']??0;
   }
 

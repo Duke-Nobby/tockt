@@ -50,32 +50,12 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
 
   var _isObscureText = true;
 
-  var _isFastLogin = false;
-
   var _countryCode = "+86";
-
-  var _currentIndex = 0;
-
-  late final TabController _controller = TabController(
-    initialIndex: _currentIndex,
-    length: 2, //Tab页数量
-    vsync: this, //动画效果的异步处理
-  )..addListener(() {
-      setState(() {
-        _isMobile = _controller.index == 0;
-        _nameController.text = '';
-      });
-    });
 
   @override
   Widget buildWidgetContent(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          colors: [Color(0xffDFF5FF), Color(0xffffffff)],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        )),
+        decoration: const BoxDecoration(color: ColorUtils.white, image: DecorationImage(image: AssetImage('assets/icons/bg_splash.png'), fit: BoxFit.fitWidth)),
         width: MediaQuery.of(context).size.width, // 屏幕宽度
         height: MediaQuery.of(context).size.height, // 屏幕高度
         child: Scaffold(
@@ -102,7 +82,7 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
               // 点击空白页面关闭键盘
               FocusScope.of(context).requestFocus(_blankNode);
             },
-            child: ListView(
+            child: Column(
               children: buildView(),
             ),
           ),
@@ -121,54 +101,38 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
     list.add(sizedBox);
     var image = Image.asset(
       "assets/icons/icon_logo.png",
-      height: 80.w,
-      width: 80.w,
+      height: 74.w,
+      width: 84.w,
     );
     list.add(image);
-    var tab = Container(
-        alignment: AlignmentDirectional.centerStart,
-        margin: EdgeInsets.only(top: 20.h),
-        child: TabBar(
-            isScrollable: true,
-            indicator: const BoxDecoration(),
-            labelColor: ColorUtils.selectTabColor,
-            unselectedLabelColor: ColorUtils.unselectTabColor,
-            labelStyle: TextStyle(fontSize: 20.sp),
-            unselectedLabelStyle: TextStyle(
-              fontSize: 16.sp,
-            ),
-            indicatorSize: TabBarIndicatorSize.label,
-            controller: _controller,
-            tabs: [
-              Tab(
-                text: S.of(context).str_phone,
-              ),
-              Tab(
-                text: S.of(context).str_email,
-              ),
-            ]));
-    list.add(tab);
+    var tocktTips = Container(
+      margin: EdgeInsets.only(top: 20),
+      alignment: Alignment.center,
+      child: Text(
+        '欢迎使用Tockt',
+        style: CommonTextStyle.blackStyle(fontSize: 25),
+      ),
+    );
+    list.add(tocktTips);
     list.add(buildLoginWidget());
     list.add(Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [buildFastLogin(), buildForgetPassword()],
+      children: [Container(), buildForgetPassword()],
     ));
     list.add(buildLoginBtn());
     list.add(buildRegisterWidget());
-    return list;
-  }
-
-  Widget buildFastLogin() {
-    return Container(
-      margin: EdgeInsets.only(left: 20.w, top: 10.h),
-      child: InkWell(
-        onTap: _onTabFastLogin,
-        child: Text(
-          _isFastLogin ? S.of(context).str_pwd_login : S.of(context).str_fast_login,
-          style: const TextStyle(color: ColorUtils.topicTextColor, fontSize: 14),
-        ),
+    list.add(Expanded(child: Container()));
+    list.add(Container(
+      alignment: Alignment.center,
+      child: Text(
+        'TOCKT，开创区块链新时代',
+        style: CommonTextStyle.hintStyle(fontSize: 13.sp),
       ),
-    );
+    ));
+    list.add(SizedBox(
+      height: 32.h,
+    ));
+    return list;
   }
 
   Widget buildForgetPassword() {
@@ -223,53 +187,44 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
     );
   }
 
-  late bool _isMobile = true;
+  // late bool _isMobile = true;
 
   Widget buildLoginWidget() {
     return Column(children: [
       Container(
           height: 42.h,
-          decoration: BoxDecoration(color: ColorUtils.white, borderRadius: BorderRadius.circular(4)),
-          margin: EdgeInsets.only(left: 20.w, top: 25.h, right: 20.w),
+          decoration: BoxDecoration(color: ColorUtils.color_f7f7f7, borderRadius: BorderRadius.circular(5)),
+          margin: EdgeInsets.only(left: 20.w, top: 64.h, right: 20.w),
           child: Row(
             children: [
-              _isMobile
-                  ? InkWell(
-                      onTap: _onTapCountry,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.only(left: 10.w, right: 6.w),
-                            child: Text(
-                              _countryCode,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 12.w,
-                            height: 12.w,
-                            child: Image.asset(
-                              'assets/icons/icon_arrow_down.png',
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  : Container(
-                      margin: EdgeInsets.only(left: 10.w),
-                      height: 18.w,
-                      width: 18.w,
-                      child: Image.asset(
-                        'assets/icons/icon_email.png',
+              InkWell(
+                onTap: _onTapCountry,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(left: 10.w, right: 6.w),
+                      child: Text(
+                        _countryCode,
                       ),
                     ),
+                    SizedBox(
+                      width: 12.w,
+                      height: 12.w,
+                      child: Image.asset(
+                        'assets/icons/icon_arrow_down.png',
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  ],
+                ),
+              ),
               Expanded(
                   child: TextField(
                 // Step5.1 由controller获得FocusNode
                 focusNode: _blankToolBarModel.getFocusNodeByController(_nameController),
                 controller: _nameController,
-                keyboardType: _isMobile ? TextInputType.phone : TextInputType.text,
+                keyboardType: TextInputType.phone,
                 textAlign: TextAlign.left,
                 maxLines: 1,
                 cursorColor: ColorUtils.cursorColor,
@@ -286,7 +241,7 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
                   focusedErrorBorder: InputBorder.none,
                   disabledBorder: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 10.w),
-                  hintText: _isMobile ? S.of(context).str_enter_phone : S.of(context).str_enter_email,
+                  hintText: S.of(context).str_enter_phone,
                   hintStyle: CommonTextStyle.hintStyle(),
                 ),
               ))
@@ -295,11 +250,11 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
       Container(
         height: 42.h,
         alignment: AlignmentDirectional.center,
-        decoration: BoxDecoration(color: ColorUtils.white, borderRadius: BorderRadius.circular(4)),
+        decoration: BoxDecoration(color: ColorUtils.color_f7f7f7, borderRadius: BorderRadius.circular(5)),
         margin: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
         child: Row(
           children: [
-            _isFastLogin ? Container() : Container(margin: const EdgeInsets.only(left: 10), child: Image.asset('assets/icons/icon_password.png')),
+            Container(margin: const EdgeInsets.only(left: 10), child: Image.asset('assets/icons/icon_password.png')),
             Expanded(
                 child: Stack(children: <Widget>[
               Container(
@@ -308,11 +263,11 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
                   // Step5.1 由controller获得FocusNode
                   focusNode: _blankToolBarModel.getFocusNodeByController(_pwdController),
                   controller: _pwdController,
-                  keyboardType: _isFastLogin ? TextInputType.phone : TextInputType.text,
+                  keyboardType: TextInputType.text,
                   textAlign: TextAlign.left,
                   maxLines: 1,
                   cursorColor: ColorUtils.cursorColor,
-                  obscureText: _isFastLogin ? false : _isObscureText,
+                  obscureText: _isObscureText,
                   style: CommonTextStyle.blackStyle(),
                   // 未获得焦点下划线设为灰色
                   decoration: InputDecoration(
@@ -326,41 +281,29 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
                     focusedErrorBorder: InputBorder.none,
                     disabledBorder: InputBorder.none,
                     contentPadding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 10.w),
-                    hintText: _isFastLogin ? S.of(context).str_enter_code : S.of(context).str_enter_password,
+                    hintText: S.of(context).str_enter_password,
                     hintStyle: CommonTextStyle.hintStyle(),
                   ),
                 ),
               ),
-              _isFastLogin
-                  ? Container(
-                      alignment: AlignmentDirectional.centerEnd,
-                      margin: const EdgeInsets.only(right: 10),
-                      child: InkWell(
-                        onTap: _getLoginCode,
-                        child: Text(
-                          _isGetCode ? S.of(context).str_get_code : '${_count}s',
-                          style: CommonTextStyle.topicStyle(),
-                        ),
-                      ),
-                    )
-                  : Container(
-                      margin: EdgeInsets.only(right: 10.w),
-                      alignment: AlignmentDirectional.centerEnd,
-                      child: InkWell(
-                        onTap: _onTapHide,
-                        child: SizedBox(
-                          width: 18.w,
-                          height: 18.w,
-                          child: _isObscureText
-                              ? Image.asset(
-                                  'assets/icons/icon_password_hide.png',
-                                )
-                              : Image.asset(
-                                  'assets/icons/icon_password_display.png',
-                                ),
-                        ),
-                      ),
-                    )
+              Container(
+                margin: EdgeInsets.only(right: 10.w),
+                alignment: AlignmentDirectional.centerEnd,
+                child: InkWell(
+                  onTap: _onTapHide,
+                  child: SizedBox(
+                    width: 18.w,
+                    height: 18.w,
+                    child: _isObscureText
+                        ? Image.asset(
+                            'assets/icons/icon_password_hide.png',
+                          )
+                        : Image.asset(
+                            'assets/icons/icon_password_display.png',
+                          ),
+                  ),
+                ),
+              )
             ]))
           ],
         ),
@@ -387,7 +330,6 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
   @override
   void onDestroy() {
     _blankToolBarModel.removeFocusListeners();
-    _countTimer?.cancel();
     super.onDestroy();
   }
 
@@ -410,73 +352,39 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
     FocusManager.instance.primaryFocus?.unfocus();
     var username = _nameController.text;
     if (username.isEmpty) {
-      MessageDialog.showToast(_isMobile ? S.of(context).str_enter_phone : S.of(context).str_enter_email);
+      MessageDialog.showToast(S.of(context).str_enter_phone);
       return;
     }
     var password = _pwdController.text;
-    if (_isFastLogin) {
-      if (password.isEmpty) {
-        MessageDialog.showToast(S.of(context).str_enter_code);
-        return;
-      }
-      ProgressDialog.showProgress(context);
-      BaseService.instance.loginByCode(password, username, _sessionId, (message, user, sessionId) {
-        ProgressDialog.dismiss(context);
-        if (message.status == ApiResultType.success) {
-          if (user != null) {
-            Storage.setString(SESSION_ID, sessionId);
-            Storage.setString(USER_NAME, username);
-            Storage.setString(USER_PASSWORD, '');
-            Storage.setInt(LOGIN_TYPE, _isMobile ? 0 : 1);
-            Storage.setBool(IS_LOGIN, true);
-            Storage.setString(USER_BEAN, json.encode(user));
-            final userState = Provider.of<UserProvider>(context, listen: false);
-            userState.changeUserBean(user);
-            userState.changeIsLoginState(true);
-            if (user.setPwd) {
-              Navigator.pushNamed(context, PagePath.pageSetLoginPwd);
-            } else {
-              Navigator.of(context).pushNamedAndRemoveUntil(PagePath.pageMain, (Route<dynamic> route) => false);
-            }
-          } else {
-            MessageDialog.showToast(message.respMsg);
-          }
-        } else {
-          MessageDialog.showToast(message.respMsg);
-        }
-      });
-    } else {
-      if (password.isEmpty) {
-        MessageDialog.showToast(S.of(context).str_enter_password);
-        return;
-      }
-      ProgressDialog.showProgress(context);
-      BaseService.instance.doLogin(username, password, (message, user, sessionId) {
-        ProgressDialog.dismiss(context);
-        if (message.status == ApiResultType.success) {
-          Storage.setString(SESSION_ID, sessionId);
-          Storage.setString(USER_NAME, username);
-          Storage.setString(USER_PASSWORD, password);
-          Storage.setInt(LOGIN_TYPE, _isMobile ? 0 : 1);
-          Storage.setBool(IS_LOGIN, true);
-          Storage.setString(USER_BEAN, json.encode(user));
-          final userState = Provider.of<UserProvider>(context, listen: false);
-          userState.changeUserBean(user);
-          userState.changeIsLoginState(true);
-          if (user != null) {
-            if (user.setPwd) {
-              Navigator.pushNamed(context, PagePath.pageSetLoginPwd);
-            } else {
-              Navigator.of(context).pushNamedAndRemoveUntil(PagePath.pageMain, (Route<dynamic> route) => false);
-            }
-          } else {
-            MessageDialog.showToast(message.respMsg);
-          }
-        } else {
-          MessageDialog.showToast(message.respMsg);
-        }
-      });
+
+    if (password.isEmpty) {
+      MessageDialog.showToast(S.of(context).str_enter_password);
+      return;
     }
+    ProgressDialog.showProgress(context);
+    BaseService.instance.doLogin(username, password, (message, user, sessionId) {
+      ProgressDialog.dismiss(context);
+      if (message.status == ApiResultType.success) {
+        Storage.setString(USER_NAME, username);
+        Storage.setString(USER_PASSWORD, password);
+        Storage.setBool(IS_LOGIN, true);
+        Storage.setString(USER_BEAN, json.encode(user));
+        final userState = Provider.of<UserProvider>(context, listen: false);
+        userState.changeUserBean(user);
+        userState.changeIsLoginState(true);
+        if (user != null) {
+          if (user.setPwd) {
+            Navigator.pushNamed(context, PagePath.pageSetLoginPwd);
+          } else {
+            Navigator.of(context).pushNamedAndRemoveUntil(PagePath.pageMain, (Route<dynamic> route) => false);
+          }
+        } else {
+          MessageDialog.showToast(message.respMsg);
+        }
+      } else {
+        MessageDialog.showToast(message.respMsg);
+      }
+    });
   }
 
   GlobalKey globalKey = GlobalKey();
@@ -537,76 +445,9 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
   }
 
   _initDate() async {
-    var loginType = await Storage.getInt(LOGIN_TYPE);
-    _currentIndex = loginType;
-    _controller.index = _currentIndex;
-    _isMobile = _currentIndex == 0;
     _userName = await Storage.getString(USER_NAME) ?? "";
     _nameController.text = _userName;
-
     _password = await Storage.getString(USER_PASSWORD) ?? "";
     _pwdController.text = _password;
-  }
-
-  _onTabFastLogin() {
-    setState(() {
-      _isFastLogin = !_isFastLogin;
-    });
-  }
-
-  var _sessionId = "";
-
-  _getLoginCode() {
-    _sessionId = "";
-    if (_isGetCode) {
-      if (_nameController.text.isEmpty) {
-        if (_isMobile) {
-          MessageDialog.showToast(S.of(context).str_enter_phone);
-        } else {
-          MessageDialog.showToast(S.of(context).str_enter_email);
-        }
-        return;
-      }
-      // 去掉空格
-      final text = _nameController.text.replaceAll(RegExp(r"\s+\b|\b\s"), "");
-      _nameController.text = text;
-      ProgressDialog.showProgress(context);
-      BaseService.instance.getLoginCode(_isMobile ? "1" : "0", text, (message, sessionId) {
-        ProgressDialog.dismiss(context);
-        if (message.status == ApiResultType.success) {
-          _sessionId = sessionId;
-          setState(() {
-            startCount();
-          });
-        } else {}
-      });
-    }
-  }
-
-  /// 倒计时
-  int _count = 60;
-
-  /// 是否可以获取验证码
-  bool _isGetCode = true;
-
-  /// 倒计时
-  Timer? _countTimer;
-
-  startCount() {
-    _countTimer?.cancel();
-    _countTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      _count -= 1;
-      if (_count == 0) {
-        _count = 60;
-        _countTimer!.cancel();
-        setState(() {
-          _isGetCode = true;
-        });
-      } else {
-        setState(() {
-          _isGetCode = false;
-        });
-      }
-    });
   }
 }
