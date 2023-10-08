@@ -1,5 +1,5 @@
-import 'package:cardwiser/network/message_model.dart';
-import 'package:cardwiser/provider/storage.dart';
+import 'package:tockt/network/message_model.dart';
+import 'package:tockt/provider/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

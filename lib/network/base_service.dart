@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cardwiser/bean/earn_record_bean.dart';
-import 'package:cardwiser/bean/transfer_record_bean.dart';
-import 'package:cardwiser/bean/version_bean.dart';
-import 'package:cardwiser/ext/extension_string.dart';
-import 'package:cardwiser/provider/storage.dart';
+import 'package:tockt/bean/earn_record_bean.dart';
+import 'package:tockt/bean/transfer_record_bean.dart';
+import 'package:tockt/bean/version_bean.dart';
+import 'package:tockt/ext/extension_string.dart';
+import 'package:tockt/provider/storage.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +38,7 @@ class BaseService {
 
   factory BaseService() => instance;
 
-  static const String baseUrl = "https://www.cardwiser.asia"; // "";//http://192.168.1.177:8089 http://www.cardwiser.asia
+  static const String baseUrl = "https://www.tockt.asia"; // "";//http://192.168.1.177:8089 http://www.tockt.asia
 
   BaseService._internal() {
     // 配置

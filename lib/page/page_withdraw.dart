@@ -1,8 +1,8 @@
 import 'dart:ffi';
 
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/base/common_text_style.dart';
-import 'package:cardwiser/widget/message_dialog.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/base/common_text_style.dart';
+import 'package:tockt/widget/message_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

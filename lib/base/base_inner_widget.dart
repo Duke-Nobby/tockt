@@ -1,7 +1,7 @@
-import 'package:cardwiser/bean/user_bean.dart';
-import 'package:cardwiser/provider/storage.dart';
-import 'package:cardwiser/provider/user_provider.dart';
-import 'package:cardwiser/utils/router.dart';
+import 'package:tockt/bean/user_bean.dart';
+import 'package:tockt/provider/storage.dart';
+import 'package:tockt/provider/user_provider.dart';
+import 'package:tockt/utils/router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

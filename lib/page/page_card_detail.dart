@@ -1,7 +1,7 @@
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/dialog/dialog_card_no.dart';
-import 'package:cardwiser/page/webview_page.dart';
-import 'package:cardwiser/provider/locale_provider.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/dialog/dialog_card_no.dart';
+import 'package:tockt/page/webview_page.dart';
+import 'package:tockt/provider/locale_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';

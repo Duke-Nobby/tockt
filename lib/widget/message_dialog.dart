@@ -1,4 +1,4 @@
-import 'package:cardwiser/base/common_text_style.dart';
+import 'package:tockt/base/common_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

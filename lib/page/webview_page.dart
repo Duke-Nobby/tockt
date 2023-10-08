@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart';
-import 'package:cardwiser/base/common_text_style.dart';
+import 'package:tockt/base/common_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';

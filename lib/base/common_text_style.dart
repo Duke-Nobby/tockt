@@ -1,4 +1,4 @@
-import 'package:cardwiser/utils/color_utils.dart';
+import 'package:tockt/utils/color_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

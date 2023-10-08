@@ -1,4 +1,4 @@
-import 'package:cardwiser/base/base_widget.dart';
+import 'package:tockt/base/base_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,7 +18,7 @@ class AboutUsPage extends BaseWidget {
 }
 
 class _AboutUsState extends BaseWidgetState<AboutUsPage> {
-  final _email = "support@cardwiser.asia";
+  final _email = "support@tockt.asia";
 
   @override
   Widget buildWidgetContent(BuildContext context) {

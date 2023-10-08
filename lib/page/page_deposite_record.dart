@@ -1,5 +1,5 @@
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/page/page_deposite_record_detail.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/page/page_deposite_record_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';

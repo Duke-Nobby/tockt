@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/base/common_text_style.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/base/common_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +23,7 @@ class SharePage extends BaseWidget {
 }
 
 class _ShareState extends BaseWidgetState<SharePage> {
-  final _inviteUrl = "https://www.cardwiser.asia";
+  final _inviteUrl = "https://www.tockt.asia";
   var _inviteCode = "";
   var _inviteNum = "";
 

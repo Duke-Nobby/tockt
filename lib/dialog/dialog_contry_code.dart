@@ -1,6 +1,6 @@
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/base/common_text_style.dart';
-import 'package:cardwiser/utils/color_utils.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/base/common_text_style.dart';
+import 'package:tockt/utils/color_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

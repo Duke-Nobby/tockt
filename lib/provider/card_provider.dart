@@ -1,7 +1,5 @@
-import 'dart:convert';
-
-import 'package:cardwiser/bean/Card_bean.dart';
-import 'package:cardwiser/provider/storage.dart';
+import 'package:tockt/bean/Card_bean.dart';
+import 'package:tockt/provider/storage.dart';
 import 'package:flutter/cupertino.dart';
 
 class CardProvider extends ChangeNotifier {

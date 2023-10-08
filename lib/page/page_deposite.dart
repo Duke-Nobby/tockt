@@ -2,11 +2,11 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'dart:ui';
 
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/bean/coin_chain_type_bean.dart';
-import 'package:cardwiser/network/base_service.dart';
-import 'package:cardwiser/network/message_model.dart';
-import 'package:cardwiser/widget/deposit_tab.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/bean/coin_chain_type_bean.dart';
+import 'package:tockt/network/base_service.dart';
+import 'package:tockt/network/message_model.dart';
+import 'package:tockt/widget/deposit_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

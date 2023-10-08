@@ -1,9 +1,9 @@
-import 'package:cardwiser/base/base_inner_widget.dart';
-import 'package:cardwiser/base/common_text_style.dart';
-import 'package:cardwiser/bean/Card_bean.dart';
-import 'package:cardwiser/network/message_model.dart';
-import 'package:cardwiser/page/page_card_detail.dart';
-import 'package:cardwiser/utils/router.dart';
+import 'package:tockt/base/base_inner_widget.dart';
+import 'package:tockt/base/common_text_style.dart';
+import 'package:tockt/bean/Card_bean.dart';
+import 'package:tockt/network/message_model.dart';
+import 'package:tockt/page/page_card_detail.dart';
+import 'package:tockt/utils/router.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';

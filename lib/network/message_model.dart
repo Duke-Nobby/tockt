@@ -1,4 +1,4 @@
-import 'package:cardwiser/event/event_bus_manager.dart';
+import 'package:tockt/event/event_bus_manager.dart';
 
 import '../event/session_expire_event.dart';
 

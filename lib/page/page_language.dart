@@ -1,7 +1,7 @@
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/provider/locale_provider.dart';
-import 'package:cardwiser/provider/storage.dart';
-import 'package:cardwiser/utils/color_utils.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/provider/locale_provider.dart';
+import 'package:tockt/provider/storage.dart';
+import 'package:tockt/utils/color_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';

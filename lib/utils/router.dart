@@ -1,17 +1,17 @@
 
-import 'package:cardwiser/page/page_bind_card.dart';
-import 'package:cardwiser/page/page_card_detail.dart';
-import 'package:cardwiser/page/page_deposite.dart';
-import 'package:cardwiser/page/page_deposite_record.dart';
-import 'package:cardwiser/page/page_earn_record.dart';
-import 'package:cardwiser/page/page_login.dart';
-import 'package:cardwiser/page/page_my_account.dart';
-import 'package:cardwiser/page/page_setting.dart';
-import 'package:cardwiser/page/page_share.dart';
-import 'package:cardwiser/page/page_splash.dart';
-import 'package:cardwiser/page/page_transfer.dart';
-import 'package:cardwiser/page/page_transfer_record.dart';
-import 'package:cardwiser/page/page_withdraw.dart';
+import 'package:tockt/page/page_bind_card.dart';
+import 'package:tockt/page/page_card_detail.dart';
+import 'package:tockt/page/page_deposite.dart';
+import 'package:tockt/page/page_deposite_record.dart';
+import 'package:tockt/page/page_earn_record.dart';
+import 'package:tockt/page/page_login.dart';
+import 'package:tockt/page/page_my_account.dart';
+import 'package:tockt/page/page_setting.dart';
+import 'package:tockt/page/page_share.dart';
+import 'package:tockt/page/page_splash.dart';
+import 'package:tockt/page/page_transfer.dart';
+import 'package:tockt/page/page_transfer_record.dart';
+import 'package:tockt/page/page_withdraw.dart';
 
 import '../dialog/dialog_contry_code.dart';
 import '../page/page_about_us.dart';

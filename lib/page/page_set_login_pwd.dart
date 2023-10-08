@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/network/base_service.dart';
-import 'package:cardwiser/network/message_model.dart';
-import 'package:cardwiser/provider/user_provider.dart';
-import 'package:cardwiser/widget/message_dialog.dart';
-import 'package:cardwiser/widget/progress_dialog.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/network/base_service.dart';
+import 'package:tockt/network/message_model.dart';
+import 'package:tockt/provider/user_provider.dart';
+import 'package:tockt/widget/message_dialog.dart';
+import 'package:tockt/widget/progress_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';

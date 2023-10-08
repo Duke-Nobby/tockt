@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:cardwiser/base/base_widget.dart';
-import 'package:cardwiser/base/common_text_style.dart';
-import 'package:cardwiser/bean/Card_bean.dart';
-import 'package:cardwiser/page/inner/page_card.dart';
-import 'package:cardwiser/page/inner/page_index.dart';
-import 'package:cardwiser/page/inner/page_mine.dart';
-import 'package:cardwiser/provider/card_provider.dart';
-import 'package:cardwiser/provider/locale_provider.dart';
-import 'package:cardwiser/utils/color_utils.dart';
+import 'package:tockt/base/base_widget.dart';
+import 'package:tockt/base/common_text_style.dart';
+import 'package:tockt/bean/Card_bean.dart';
+import 'package:tockt/page/inner/page_card.dart';
+import 'package:tockt/page/inner/page_index.dart';
+import 'package:tockt/page/inner/page_mine.dart';
+import 'package:tockt/provider/card_provider.dart';
+import 'package:tockt/provider/locale_provider.dart';
+import 'package:tockt/utils/color_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
