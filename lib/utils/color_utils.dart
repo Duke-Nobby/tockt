@@ -14,5 +14,7 @@ class ColorUtils {
   static const lineColor = Color(0xFFF5F5F5);
   static const greenColor = Color(0xFF0ECB2C);
   static const color_f7f7f7 = Color(0xFFf7f7f7);
+  static const btn_start = Color(0xFF3c8ce7);
+  static const btn_end = Color(0xFF00EAFF);
 
 }

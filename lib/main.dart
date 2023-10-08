@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:mmkv/mmkv.dart';
 import 'package:tockt/network/base_service.dart';
 import 'package:tockt/provider/card_provider.dart';
 import 'package:tockt/provider/locale_provider.dart';
@@ -23,6 +24,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  final rootDir = await MMKV.initialize();
+  print("MMKV for flutter with rootDir = $rootDir");
   var language = await MMKVUtils.getString(LOCALE_KEY) ?? window.locale.languageCode;
   var isLogin = await MMKVUtils.getBool(IS_LOGIN);
   var userBean = null;

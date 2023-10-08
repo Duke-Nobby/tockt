@@ -21,6 +21,7 @@ import '../page/page_forget_password.dart';
 import '../page/page_language.dart';
 import '../page/page_main.dart';
 import '../page/page_modify_pwd.dart';
+import '../page/page_register.dart';
 import '../page/page_reverse_fund_recharge.dart';
 import '../page/page_set_login_pwd.dart';
 import '../page/page_set_pwd.dart';
@@ -31,6 +32,7 @@ class PagePath {
   static const pageLogin = '/login';
   static const pageSplash = '/splash';
   static const pageMain = '/main';
+  static const pageRegister = '/register';
   static const pageLanguage = '/language';
   static const pageForgetPassword = '/forget_pwd';
   static const pageWebview = '/webview';
@@ -81,4 +83,5 @@ final routers = {
   PagePath.pageWithdrawRecord: (context, {arguments}) => WithdrawRecordPage(),
   PagePath.pageReserveFundRecharge: (context, {arguments}) => ReverseFundRechargePage(),
   PagePath.pageSetLoginPwd: (context, {arguments}) => PageSetLoginPwdPage(),
+  PagePath.pageRegister:(context, {arguments}) => RegisterPage(),
 };

@@ -9,10 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../base/base_widget.dart';
 import '../generated/l10n.dart';
-import '../network/base_service.dart';
 import '../utils/mmkv_utils.dart';
 import '../utils/pwd_utils.dart';
-import '../utils/router.dart';
 import '../widget/blank_tool_bar_tool.dart';
 import '../widget/message_dialog.dart';
 import '../widget/progress_dialog.dart';
@@ -39,9 +37,6 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
   /// 是否密码明文
   bool _isObscureText = true;
 
-  /// 是否手机
-  bool _isMobile = false;
-
   ///   区号
   String _countryCode = '+86';
 
@@ -54,11 +49,6 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
   /// 倒计时
   Timer? _countTimer;
 
-  late final TabController _controller = TabController(
-    length: 2, //Tab页数量
-    vsync: this, //动画效果的异步处理
-  );
-
   @override
   Widget buildWidgetContent(BuildContext context) {
     var sizedBox = SizedBox(
@@ -66,24 +56,29 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
     );
     var image = Image.asset(
       "assets/icons/icon_logo.png",
-      height: 84.w,
-      width: 92.w,
+      height: 74.w,
+      width: 84.w,
     );
     return Container(
-        decoration: const BoxDecoration(
-            color: ColorUtils.white,
-            image: DecorationImage(
-                alignment: Alignment.topCenter,
-                image: AssetImage(
-                  'assets/icons/bg_login_header.png',
-                ),
-                fit: BoxFit.fitWidth)), // 屏幕高度
+        decoration: const BoxDecoration(color: ColorUtils.white, image: DecorationImage(image: AssetImage('assets/icons/bg_splash.png'), fit: BoxFit.fitWidth)),
+        width: MediaQuery.of(context).size.width, // 屏幕宽度
+        height: MediaQuery.of(context).size.height, // 屏幕高度
+        // 屏幕高度
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            systemOverlayStyle: const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
-          ),
-          backgroundColor: Colors.white,
+              backgroundColor: Colors.transparent,
+              systemOverlayStyle: const SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
+              leading: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  child: Image.asset(
+                    'assets/icons/icon_black_back.png',
+                  ),
+                ),
+              )),
+          backgroundColor: Colors.transparent,
           body: GestureDetector(
               onTap: () {
                 // 点击空白页面关闭键盘
@@ -92,33 +87,9 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
               child: ListView(children: <Widget>[
                 sizedBox,
                 image,
-                Container(
-                    alignment: AlignmentDirectional.centerStart,
-                    margin: EdgeInsets.only(top: 25.h),
-                    child: TabBar(
-                        isScrollable: true,
-                        indicator: const BoxDecoration(),
-                        labelColor: ColorUtils.selectTabColor,
-                        unselectedLabelColor: ColorUtils.unselectTabColor,
-                        labelStyle: TextStyle(fontSize: 20.sp),
-                        unselectedLabelStyle: TextStyle(
-                          fontSize: 16.sp,
-                        ),
-                        indicatorSize: TabBarIndicatorSize.label,
-                        controller: _controller,
-                        tabs: [
-                          Tab(
-                            text: S.of(context).str_email,
-                          ),
-                          Tab(
-                            text: S.of(context).str_phone,
-                          )
-                        ])),
                 //输入框
-                Container(
-                  child: Column(
-                    children: _getWidgetList(),
-                  ),
+                Column(
+                  children: _getWidgetList(),
                 ),
               ])),
         ));
@@ -128,47 +99,38 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
     var list = <Widget>[];
     final userNameWidget = Container(
         height: 42.h,
-        decoration: BoxDecoration(color: ColorUtils.color_f7f7f7, borderRadius: BorderRadius.circular(21)),
+        decoration: BoxDecoration(color: ColorUtils.color_f7f7f7, borderRadius: BorderRadius.circular(5)),
         margin: EdgeInsets.only(left: 20.w, top: 25.h, right: 20.w),
         child: Row(
           children: [
-            _isMobile
-                ? InkWell(
-                    onTap: _onTapCountry,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.only(left: 10.w, right: 6.w),
-                          child: Text(
-                            _countryCode,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 12.w,
-                          height: 12.w,
-                          child: Image.asset(
-                            'assets/icons/icon_arrow_down.png',
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                      ],
-                    ),
-                  )
-                : Container(
-                    margin: EdgeInsets.only(left: 10.w),
-                    height: 18.w,
-                    width: 18.w,
-                    child: Image.asset(
-                      'assets/icons/icon_email.png',
+            InkWell(
+              onTap: _onTapCountry,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(left: 10.w, right: 6.w),
+                    child: Text(
+                      _countryCode,
                     ),
                   ),
+                  SizedBox(
+                    width: 12.w,
+                    height: 12.w,
+                    child: Image.asset(
+                      'assets/icons/icon_arrow_down.png',
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                ],
+              ),
+            ),
             Expanded(
                 child: TextField(
               // Step5.1 由controller获得FocusNode
               focusNode: _blankToolBarModel.getFocusNodeByController(_nameController),
               controller: _nameController,
-              keyboardType: _isMobile ? TextInputType.phone : TextInputType.text,
+              keyboardType: TextInputType.phone,
               textAlign: TextAlign.left,
               maxLines: 1,
               cursorColor: ColorUtils.cursorColor,
@@ -185,7 +147,7 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
                 focusedErrorBorder: InputBorder.none,
                 disabledBorder: InputBorder.none,
                 contentPadding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 10.w),
-                hintText: _isMobile ? S.of(context).str_enter_phone : S.of(context).str_enter_email,
+                hintText: S.of(context).str_enter_phone,
                 hintStyle: CommonTextStyle.hintStyle(),
               ),
             ))
@@ -193,7 +155,7 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
         ));
     final passwordWidget = Container(
       height: 42.h,
-      decoration: BoxDecoration(color: ColorUtils.color_f7f7f7, borderRadius: BorderRadius.circular(21)),
+      decoration: BoxDecoration(color: ColorUtils.color_f7f7f7, borderRadius: BorderRadius.circular(5)),
       margin: EdgeInsets.only(left: 20.w, top: 25.h, right: 20.w),
       child: Row(
         children: [
@@ -317,8 +279,8 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
       margin: EdgeInsets.only(top: 40.h, left: 20.w, right: 20.w),
       child: Container(
         alignment: Alignment.center,
-        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(24))),
-        height: 48.h,
+        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)), gradient: LinearGradient(colors: [ColorUtils.btn_start, ColorUtils.btn_end])),
+        height: 40.h,
         child: InkWell(
           onTap: _onTapRegister,
           child: Text(
@@ -380,11 +342,7 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
     final dynamicCode = _codeController.text;
     final newLoginPwd = _pwdController.text;
     if (userName.isEmpty) {
-      if (_isMobile) {
-        MessageDialog.showToast(S.of(context).str_enter_phone);
-      } else {
-        MessageDialog.showToast(S.of(context).str_enter_email);
-      }
+      MessageDialog.showToast(S.of(context).str_enter_phone);
       return;
     }
     if (newLoginPwd.isEmpty) {
@@ -400,10 +358,10 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
       return;
     }
     ProgressDialog.showProgress(context);
-    BaseService.instance.changeLoginPwd(_isMobile ? "1" : "0", userName, newLoginPwd, newLoginPwd, dynamicCode, (message) {
-      ProgressDialog.dismiss(context);
-      MessageDialog.showToast("");
-    });
+    // BaseService.instance.changeLoginPwd(_isMobile ? "1" : "0", userName, newLoginPwd, newLoginPwd, dynamicCode, (message) {
+    //   ProgressDialog.dismiss(context);
+    //   MessageDialog.showToast("");
+    // });
   }
 
   /// 获取动态验证码
@@ -416,11 +374,7 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
   /// 获取验证码
   _getCode() {
     if (_nameController.text.isEmpty) {
-      if (_isMobile) {
-        MessageDialog.showToast(S.of(context).str_enter_phone);
-      } else {
-        MessageDialog.showToast(S.of(context).str_enter_email);
-      }
+      MessageDialog.showToast(S.of(context).str_enter_phone);
       return;
     }
     // 去掉空格
@@ -458,11 +412,6 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
 
   @override
   void onCreate() {
-    _controller.addListener(() {
-      setState(() {
-        _isMobile = _controller.index == 1;
-      });
-    });
     _initData();
   }
 
@@ -511,11 +460,7 @@ class _RegisterState extends BaseWidgetState<RegisterPage> with TickerProviderSt
 
   _onTapRegister() {
     if (_nameController.text.isEmpty) {
-      if (_isMobile) {
-        MessageDialog.showToast(S.of(context).str_enter_phone);
-      } else {
-        MessageDialog.showToast(S.of(context).str_enter_email);
-      }
+      MessageDialog.showToast(S.of(context).str_enter_phone);
       return;
     }
 

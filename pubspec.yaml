@@ -151,6 +151,7 @@ flutter:
     - assets/icons/icon_card_bind.png
     - assets/icons/icon_card_none.png
     - assets/icons/bg_splash.png
+    - assets/icons/icon_check_code.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

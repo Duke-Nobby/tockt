@@ -158,8 +158,8 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
               onTap: _onPressedLogin,
               child: Container(
                 alignment: Alignment.center,
-                decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)), gradient: LinearGradient(colors: [Color(0xff3c8ce7), Color(0xff00EAFF)])),
-                height: 48.h,
+                decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8)), gradient: LinearGradient(colors: [ColorUtils.btn_start, ColorUtils.btn_end])),
+                height: 40.h,
                 child: Text(
                   S.of(context).str_login,
                   style: const TextStyle(fontSize: 16, color: Colors.white),
@@ -390,21 +390,7 @@ class _LoginState extends BaseWidgetState<LoginPage> with TickerProviderStateMix
   GlobalKey globalKey = GlobalKey();
 
   _onTapRegister() async {
-    _navigeWeb();
-    // PermissionStatus result = await Permission.camera.request();
-    // print('PermissionStatus = ' + result.name + result.isGranted.toString());
-    // if (result.isGranted) {
-    // }
-  }
-
-  _navigeWeb() {
-    var v4 = const Uuid().v4();
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return WebviewPage(
-        title: S.of(context).str_register,
-        remoteUrl: "https://card-onboarding.paywiser.com/obportaladmin/WebFrmSSKYCLinkGenerate?whiteagentID=202308091001&reqid=${v4}",
-      );
-    }));
+    Navigator.pushNamed(context, PagePath.pageRegister);
   }
 
   _checkUpdate() {
